@@ -1,0 +1,71 @@
+package tn.tuniprob.gestionmagasin;
+
+public class Magasin {
+    private int identifiant;
+    private String adresse;
+    private int capaciteMagasin = 50;
+    private ProduitAlimentaire [] ensembleProduits = new ProduitAlimentaire[capaciteMagasin];
+    private int dernierIndiceEnsProd = 0;
+
+    public static int  nombreTotalTousProduits = 0;
+
+    public int getIdentifiant() {
+        return identifiant;
+    }
+
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public int getCapaciteMagasin() {
+        return capaciteMagasin;
+    }
+
+    public void setCapaciteMagasin(int capaciteMagasin) {
+        this.capaciteMagasin = capaciteMagasin;
+    }
+
+    public void ajouterNouveauProduit(ProduitAlimentaire produitAlimentaire) {
+	  if(dernierIndiceEnsProd < 50){
+		this.ensembleProduits[dernierIndiceEnsProd++] = produitAlimentaire;
+        	nombreTotalTousProduits++;
+	  } else {
+	  	System.out.println("taille depasse");
+	  }
+        
+    }
+
+    public void afficher() {
+        System.out.println("identifiant du magasin: "+this.identifiant);
+        System.out.println("adresse du magasin: "+this.adresse);
+        System.out.println("capacite du magasin: "+this.capaciteMagasin);
+        System.out.println("----------- Les Produits -----------");
+        for (int i = 0; i < dernierIndiceEnsProd; i++) {
+            this.ensembleProduits[i].afficher();
+            System.out.println("-----------");
+        }
+    }
+
+    @Override
+    public String toString() {
+        String returnedStr = "identifiant du magasin: "+this.identifiant +
+                "\nadresse du magasin: "+this.adresse +
+                "\ncapacite du magasin: "+this.capaciteMagasin + "\n" +
+                "----------- Les Produits -----------";
+
+        for (int i = 0; i < dernierIndiceEnsProd; i++){
+            returnedStr += "\n" + this.ensembleProduits[i].toString()
+                    + "\n-----------";
+        }
+
+        return returnedStr;
+    }
+}
