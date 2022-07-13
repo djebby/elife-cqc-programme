@@ -99,6 +99,7 @@ public class Magasin {
                         this.ensembleProduits[j] = this.ensembleProduits[j+1];
                     }
                     this.dernierIndiceEnsProd--;
+                    nombreTotalTousProduits--;
                     break;
                 }
             }

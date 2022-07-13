@@ -42,11 +42,15 @@ public class Main {
         magasin2.ajouterNouveauProduit(produitAlimentaireSicam);
 
         // test 4éme question
+        System.out.println("test 4eme question");
         magasin1.afficher();
+        System.out.println(Magasin.getNombreTotalTousProduits());
         magasin1.supprimerProduit(1021);
         magasin1.afficher();
+        System.out.println(Magasin.getNombreTotalTousProduits());
 
         // test 5éme question
+        System.out.println("test 5eme question");
         System.out.println( Magasin.superieurMagasin(magasin1, magasin2) );
     }
 }
