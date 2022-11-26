@@ -58,6 +58,16 @@ router.post('/modifier/:libelle', async (req, res, next)=> {
 
 
 
+router.get('/supprimer/:libelle', async (req, res, next)=>{
+  const libelle = req.params.libelle;
+
+  await Projet.findOneAndDelete({libelle});
+
+  res.redirect('/projet');
+});
+
+
+
 
 module.exports = router;
 
