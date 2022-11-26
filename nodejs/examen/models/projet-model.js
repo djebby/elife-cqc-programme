@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const projet = new Schema({
     libelle: String,
-    description: Number,
-    duree: Boolean
+    description: String,
+    duree: Number
 });
 
 module.exports = mongoose.model('projet', projet);

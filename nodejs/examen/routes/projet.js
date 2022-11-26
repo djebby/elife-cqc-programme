@@ -4,16 +4,21 @@ const Projet = require('../models/projet-model.js');
 
 /* GET users listing. */
 router.post('/ajouter', async (req, res, next) => {
-  // const example = new Example({
-  //   field01: 'field01 with of type string',
-  //   field02: 5,
-  //   field03: false
-  // });
-  // const result = await example.save();
-  // res.send(result);
 
-  console.log("post method from the formulair ....");
+  const { libelle, description, duree } = req.body;
+
+  console.log(libelle, description, duree);
+
+  const projet = new Projet({
+    libelle: libelle,
+    description: description,
+    duree: +duree
+  });
+  const result = await projet.save();
+  res.redirect('/projet/ajouter');
 });
+
+
 
 
 router.get('/ajouter', async (req, res, next) => {
