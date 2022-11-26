@@ -2,13 +2,13 @@
 
 <form method="POST">
     <label> Libelle </label>
-    <input type="text" name="libelle" />
+    <input type="text" name="libelle" value="{{ projet.libelle }}" />
     <br/>
     <label> description </label>
-    <input type="text" name="description" />
+    <input type="text" name="description" value="{{ projet.description }}" />
     <br/>
     <label> Duree </label>
-    <input type="number" name="duree" />
+    <input type="number" name="duree" value="{{ projet.duree }}" />
     <br />
     <button type="submit"> Modifier </button>
 </form>

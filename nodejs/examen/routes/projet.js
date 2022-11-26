@@ -2,7 +2,19 @@ var express = require('express');
 var router = express.Router();
 const Projet = require('../models/projet-model.js');
 
-/* GET users listing. */
+router.get('/', async (req, res, next)=> {
+
+  const projets = await Projet.find();
+
+  console.log(projets);
+
+  res.render('projets', {projets});
+
+});
+
+
+
+
 router.post('/ajouter', async (req, res, next) => {
 
   const { libelle, description, duree } = req.body;
@@ -26,21 +38,26 @@ router.get('/ajouter', async (req, res, next) => {
   res.render('ajouter-projet');
 });
 
-router.get('/modifier', async (req, res, next) => {
-  // const examples = await Example.find();
-  res.render('modifier-projet');
+router.get('/modifier/:libelle', async (req, res, next) => {
+  const libelle = req.params.libelle;
+  const projet = await Projet.findOne({ libelle });
+  console.log(projet);
+  res.render('modifier-projet', {projet});
 });
 
 
 
-router.post('/modifier', async (req, res, next)=> {
+router.post('/modifier/:libelle', async (req, res, next)=> {
   const { libelle, description, duree } = req.body;
 
-  const result = await Projet.findOneAndUpdate({ libelle }, {libelle, description, duree: +duree });
-  console.log(result);
-  res.redirect('/projet/modifier');
+  const projet = await Projet.findOneAndUpdate({ libelle }, {libelle, description, duree: +duree });
+
+  res.redirect('/projet');
 
 });
+
+
+
 
 module.exports = router;
 

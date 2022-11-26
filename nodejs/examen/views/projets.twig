@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<table border="1">
+<tr>
+    <td>Libelle</td><td> Description </td><td>Duree en jour </td> <td> Action </td>
+</tr>
+
+{% for projet in projets %}
+    <tr>
+    <td>{{projet.libelle}}</td>
+    <td>{{projet.description}}</td>
+    <td>{{projet.duree}}</td>
+    <td> <a href="projet/modifier/{{projet.libelle}}"> Modifier </a> <a href="#"> Delete </a>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
