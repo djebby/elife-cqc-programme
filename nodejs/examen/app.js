@@ -6,12 +6,12 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var projetRouter = require('./routes/projet');
 
 var app = express();
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/examples_db').then(()=>{
+mongoose.connect('mongodb://127.0.0.1:27017/projetdb').then(()=>{
   console.log('connection to db server successfully...');
 }).catch(error => {
   console.log(error.message);
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/projet', projetRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
