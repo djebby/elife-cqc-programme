@@ -26,6 +26,22 @@ router.get('/ajouter', async (req, res, next) => {
   res.render('ajouter-projet');
 });
 
+router.get('/modifier', async (req, res, next) => {
+  // const examples = await Example.find();
+  res.render('modifier-projet');
+});
+
+
+
+router.post('/modifier', async (req, res, next)=> {
+  const { libelle, description, duree } = req.body;
+
+  const result = await Projet.findOneAndUpdate({ libelle }, {libelle, description, duree: +duree });
+  console.log(result);
+  res.redirect('/projet/modifier');
+
+});
+
 module.exports = router;
 
 
