@@ -1,0 +1,30 @@
+
+
+<form>
+
+    <label> Duree </label>  
+
+    <input  type="text" name="duree" />
+
+    <button> Trouver </button>
+
+</form>
+
+
+{% if projet %}
+
+<table border="1">
+<tr>
+    <td>Libelle</td><td> Description </td><td>Duree en jour </td> 
+</tr>
+
+
+    <tr>
+    <td>{{projet.libelle}}</td>
+    <td>{{projet.description}}</td>
+    <td>{{projet.duree}}</td>
+    </tr>
+
+</table>
+
+{% endif %}

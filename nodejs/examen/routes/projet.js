@@ -66,6 +66,24 @@ router.get('/supprimer/:libelle', async (req, res, next)=>{
   res.redirect('/projet');
 });
 
+router.get('/recherche', async (req, res, next) => {
+
+  const duree = req.query['duree'];
+
+  console.log(duree);
+
+  
+  if(duree) {
+    
+    const projet = await Projet.findOne({duree: +duree});
+    res.render('recherche', {projet});
+  } else {
+    res.render('recherche');
+  }
+
+
+});
+
 
 
 
